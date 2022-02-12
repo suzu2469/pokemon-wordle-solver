@@ -1,0 +1,4 @@
+src/dicts/**/*
+!src/dicts/.gitkeep
+
+node_modules
