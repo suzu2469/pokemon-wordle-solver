@@ -34,7 +34,11 @@ const isHit =
                         case Word.Hint.WrongWord:
                             return isExclude(poke[0], chunk.section.word)
                         case Word.Hint.CorrectWord:
-                            return isInclude(poke[0], chunk.section.word)
+                            return isInclude(
+                                poke[0],
+                                chunk.wordIndex,
+                                chunk.section.word,
+                            )
                         case Word.Hint.CorrectWordAndPlace:
                             return isCorrectPlace(
                                 poke[0],
@@ -48,5 +52,6 @@ const isHit =
 
 const isCorrectPlace = (str: string, index: number, a: string) =>
     str.indexOf(a) === index
-const isInclude = (str: string, a: string) => str.indexOf(a) >= 0
+const isInclude = (str: string, index: number, a: string) =>
+    str.indexOf(a) >= 0 && str.indexOf(a) !== index
 const isExclude = (str: string, a: string) => str.indexOf(a) <= -1
